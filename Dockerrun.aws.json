@@ -1,0 +1,40 @@
+{
+ "AWSEBDockerrunVersion": 2,
+ "containerDefinitions": [
+  {
+   "name": "glpi-server",
+   "image": "cmotta2016/glpi",
+   "hostname": "glpi-server",
+   "essential": false,
+   "memory": 128
+   },
+   {
+   "name": "ocsinventory-server",
+   "image": "cmotta2016/ocsinventory",
+   "hostname": "ocsinventory-server",
+   "essential": false,
+   "portMappings": [
+    {
+     "hostPort": 443,
+     "containerPort": 443
+     }
+    ],
+   "memory": 128
+   },
+   {
+   "name": "nginx",
+   "image": "cmotta2016/nginx-proxy",
+   "hostname": "nginx",
+   "essential": true,
+   "portMappings": [
+    {
+     "hostPort": 80,
+     "containerPort": 80
+     }
+    ],
+   "links": ["glpi-server", "ocsinventory-server"],
+   "memory": 128
+   }
+  ]
+}  
+

@@ -1,0 +1,17 @@
+sudo: required
+before_deploy: "echo 'ready?'"
+
+deploy:
+ provider: elasticbeanstalk
+ region: "sa-east-1"
+ app: "docker-glpi-ocs"
+ env: "DockerGlpiOcs-env"
+ bucket_name: "elasticbeanstalk-sa-east-1-993975117034"
+ bucket_path: "docker-glpi-ocs"
+ on:
+  branch: master
+ access_key_id: $AWS_ACCESS_KEY_ID
+ secret_access_key:
+  secure: "$AWS_SECRET_ACCESS_KEY"
+
+after_deploy: "echo 'Deploy Completed'"

@@ -1,0 +1,11 @@
+sudo: required
+services:
+ - docker
+
+script:
+  - echo "no tests!"
+
+after_success:
+ - docker build -t cmotta2016/nginx-proxy -f ./nginx
+ - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_ID" --password-stdin
+ - docker push cmotta2016/nginx-proxy
