@@ -59,11 +59,10 @@ volumes:
   glpiserver:
 ```
 
-To run this applications:
+Deploying applications:
 ```
 # docker-compose up --build -d 
 ```
-
 # Installing Plugin
 Install OCSInventory plugin directly inside directory mounted on volume glpiserver.
 Check latest plugin on: https://github.com/pluginsGLPI/ocsinventoryng/releases
