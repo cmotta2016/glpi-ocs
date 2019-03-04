@@ -9,4 +9,3 @@ after_success:
  - docker build -t cmotta2016/nginx-proxy -f ./nginx/Dockerfile ./nginx
  - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_ID" --password-stdin
  - docker push cmotta2016/nginx-proxy
-
