@@ -9,3 +9,20 @@ after_success:
  - docker build -t cmotta2016/nginx-proxy -f ./nginx/Dockerfile ./nginx
  - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_ID" --password-stdin
  - docker push cmotta2016/nginx-proxy
+
+before_deploy: "echo 'Starting Deploy!'"
+
+deploy:
+ provider: elasticbeanstalk
+ region: "sa-east-1"
+ app: "glpi-ocs"
+ env: "GlpiOcs-env"
+ bucket_name: "elasticbeanstalk-sa-east-1-993975117034"
+ bucket_path: "glpi-ocs"
+ on:
+  branch: master
+ access_key_id: $AWS_ACCESS_KEY_ID
+ secret_access_key:
+  secure: "$AWS_SECRET_ACCESS_KEY"
+
+after_deploy: "echo 'Deploy Completed'"
