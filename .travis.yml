@@ -15,10 +15,10 @@ before_deploy: "echo 'Starting Deploy!'"
 deploy:
  provider: elasticbeanstalk
  region: "sa-east-1"
- app: "glpi-ocs"
- env: "GlpiOcs-env"
+ app: "glpi-ocs-docker"
+ env: "GlpiOcsDocker-env"
  bucket_name: "elasticbeanstalk-sa-east-1-993975117034"
- bucket_path: "glpi-ocs"
+ bucket_path: "glpi-ocs-docker"
  on:
   branch: master
  access_key_id: $AWS_ACCESS_KEY_ID
